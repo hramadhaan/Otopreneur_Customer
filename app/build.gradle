@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.example.customer_otopedia"
+        applicationId "com.otopreneur.otopreneur_customer"
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
@@ -27,8 +27,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+//    DESIGN
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1';
 
     implementation 'com.google.android.material:material:1.0.0-rc01'
     implementation 'androidx.cardview:cardview:1.0.0-beta01'
@@ -36,6 +40,9 @@ dependencies {
 //    implementation 'de.hdodenhof:circleimageview:3.0.1'
 
     implementation("com.squareup.okhttp3:okhttp:4.2.1")
+
+//    Permission Manager
+    implementation 'com.github.karanchuri:PermissionManager:0.1.0'
 
     implementation 'com.loopj.android:android-async-http:1.4.10'
     implementation 'com.squareup.picasso:picasso:2.71828'
@@ -52,6 +59,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
 
     implementation 'com.jakewharton:butterknife:8.6.0'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     implementation 'com.qhutch.bottomsheetlayout:bottomsheetlayout:0.1.9'
 }

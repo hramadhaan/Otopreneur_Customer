@@ -10,25 +10,22 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/orderhistory_appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:background="@null"
+        android:layout_height="?attr/actionBarSize">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/orderhistory_toolbar"
             android:layout_width="match_parent"
             app:theme="@style/Widget.AppCompat.ActionBar.TabBar"
             android:layout_height="wrap_content">
-            <RelativeLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/orderhistory_judul"
-                    android:layout_centerHorizontal="true"
-                    android:text="Order"
-                    android:textSize="18dp"
-                    android:textColor="#282F39"
-                    android:fontFamily="@font/sfbold"/>
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/orderhistory_judul"
+                android:text="Service Motor"
+                android:textSize="18dp"
+                android:fontFamily="@font/sfbold"
+                android:gravity="center"
+                android:layout_marginRight="?android:attr/actionBarSize"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -46,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/orderhistory_tv_customer"
-                android:text="Customer"
+                android:text="Vendor"
                 android:textSize="18dp"
                 android:fontFamily="@font/sfbold"/>
 
@@ -114,6 +111,26 @@
                 android:id="@+id/orderhistory_lokasi"
                 android:text="Jl. Soekarno Hatta"
                 android:layout_below="@id/orderhistory_tv_lokasi"
+                android:fontFamily="@font/sf"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Catatan"
+                android:fontFamily="@font/sfbold"
+                android:id="@+id/orderhistory_tv_catatan"
+                android:textSize="18dp"
+                android:layout_below="@id/orderhistory_lokasi"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/orderhistory_catatan"
+                android:text="Catatan"
+                android:layout_below="@id/orderhistory_tv_catatan"
                 android:fontFamily="@font/sf"
                 android:textSize="16dp"/>
 

@@ -4,20 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/utama"
     android:layout_height="match_parent"
     tools:context=".Activity.Activity.Fitur.Settings">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
-        android:background="#282F39"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_height="wrap_content"/>
 
     <RelativeLayout
         android:id="@+id/settings_atas"
         android:layout_below="@id/settings_toolbar"
         android:layout_width="match_parent"
-        android:background="#282F39"
         android:layout_height="200dp">
 
         <RelativeLayout
@@ -58,41 +58,47 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/settings_tengah"
+        android:layout_marginVertical="0dp"
+        android:paddingVertical="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settings_tengah"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="-3dp"
         android:background="#fff">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp">
+
             <TextView
-                android:layout_marginTop="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/settings_data"
-                android:textSize="18dp"
-                android:fontFamily="@font/sf"
-                android:text="Data Personal"/>
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_below="@id/settings_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf"
+                android:text="Data Personal"
+                android:textSize="18dp" />
+
+            <TextView
                 android:id="@+id/settings_ganti"
-                android:textSize="18dp"
-                android:fontFamily="@font/sf"
-                android:text="Ubah Password"/>
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_below="@id/settings_ganti"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/settings_logout"
-                android:textSize="18dp"
+                android:layout_below="@id/settings_data"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/sf"
-                android:text="Logout"/>
+                android:text="Ubah Password"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/settings_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/settings_ganti"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sf"
+                android:text="Logout"
+                android:textSize="18dp" />
         </RelativeLayout>
 
     </RelativeLayout>

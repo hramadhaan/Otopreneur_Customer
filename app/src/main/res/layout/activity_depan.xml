@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OTOPEDIA"
+        android:src="@drawable/waiting_logo"
         android:fontFamily="@font/sfbold"
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
@@ -22,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp">
         <Button
-            android:visibility="gone"
             android:layout_marginHorizontal="20dp"
             android:id="@+id/depan_login"
             android:layout_width="match_parent"
@@ -31,11 +32,23 @@
             android:textColor="#fff"
             android:text="Login"/>
 
-        <com.google.android.gms.common.SignInButton
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/depan_progress"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:text="Sign Up"
+            android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="20dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/depan_login"
+            android:textSize="16dp"
+            android:layout_marginTop="15dp"
+            android:textColor="#fff"
             android:id="@+id/depan_google"/>
 
     </RelativeLayout>

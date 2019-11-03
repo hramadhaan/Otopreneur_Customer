@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/item_sm_cv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    android:background="@drawable/bg"
+    android:layout_marginVertical="3dp"
+    android:layout_height="50dp">
+
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_sm_nama"
+            android:fontFamily="@font/sfbold"
+            android:textSize="18dp"
+            android:text="Ganti Oli"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

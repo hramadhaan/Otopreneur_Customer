@@ -7,150 +7,180 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Activity.Fitur.Order">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/order_appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/order_toolbar"
-            android:layout_width="match_parent"
-            app:theme="@style/Widget.AppCompat.ActionBar.TabBar"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/order_judul"
-                    android:layout_centerHorizontal="true"
-                    android:text="Order"
-                    android:textSize="18dp"
-                    android:textColor="#282F39"
-                    android:fontFamily="@font/sfbold"/>
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/order_swipe">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/order_appbar">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <com.google.android.material.appbar.AppBarLayout
+           android:id="@+id/order_appbar"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <androidx.appcompat.widget.Toolbar
+               android:id="@+id/order_toolbar"
+               android:layout_width="match_parent"
+               app:theme="@style/Widget.AppCompat.ActionBar.TabBar"
+               android:layout_height="wrap_content">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/order_judul"
+                   android:text="Order"
+                   android:textSize="18dp"
+                   android:fontFamily="@font/sfbold"
+                   android:gravity="center"
+                   android:layout_marginRight="?android:attr/actionBarSize"/>
+           </androidx.appcompat.widget.Toolbar>
+       </com.google.android.material.appbar.AppBarLayout>
 
-        <RelativeLayout
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginVertical="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_below="@+id/order_appbar">
 
-            <TextView
-                android:text="Customer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/order_customer"
-                android:fontFamily="@font/sfbold"
-                android:textSize="16dp"/>
+           <RelativeLayout
+               android:layout_marginHorizontal="15dp"
+               android:layout_marginVertical="20dp"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/order_hasil_customer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/order_customer"
-                android:text="Cecep"
-                android:fontFamily="@font/sf"
-                android:textSize="14dp"
-                />
+               <TextView
+                   android:text="Customer"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/order_customer"
+                   android:fontFamily="@font/sfbold"
+                   android:textSize="16dp"/>
 
-            <TextView
-                android:layout_below="@id/order_hasil_customer"
-                android:layout_marginTop="10dp"
-                android:text="Tipe Kendaraan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/order_tipekendaraan"
-                android:fontFamily="@font/sfbold"
-                android:textSize="16dp"/>
+               <TextView
+                   android:id="@+id/order_hasil_customer"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/order_customer"
+                   android:text="Cecep"
+                   android:fontFamily="@font/sf"
+                   android:textSize="14dp"
+                   />
 
-            <TextView
-                android:id="@+id/order_hasil_tipekendaraan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/order_tipekendaraan"
-                android:text="Vega ZR"
-                android:fontFamily="@font/sf"
-                android:textSize="14dp"
-                />
+               <TextView
+                   android:layout_below="@id/order_hasil_customer"
+                   android:layout_marginTop="10dp"
+                   android:text="Tipe Kendaraan"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/order_tipekendaraan"
+                   android:fontFamily="@font/sfbold"
+                   android:textSize="16dp"/>
 
-            <TextView
-            android:layout_below="@id/order_hasil_tipekendaraan"
-            android:layout_marginTop="10dp"
-            android:text="Tipe Service"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/order_tipeservice"
-            android:fontFamily="@font/sfbold"
-            android:textSize="16dp"/>
+               <TextView
+                   android:id="@+id/order_hasil_tipekendaraan"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/order_tipekendaraan"
+                   android:text="Vega ZR"
+                   android:fontFamily="@font/sf"
+                   android:textSize="14dp"
+                   />
 
-            <TextView
-                android:id="@+id/order_hasil_tipeservice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/order_tipeservice"
-                android:text="Tambal Ban"
-                android:fontFamily="@font/sf"
-                android:textSize="14dp"
-                />
+               <TextView
+                   android:layout_below="@id/order_hasil_tipekendaraan"
+                   android:layout_marginTop="10dp"
+                   android:text="Tipe Service"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/order_tipeservice"
+                   android:fontFamily="@font/sfbold"
+                   android:textSize="16dp"/>
 
-            <TextView
-                android:layout_below="@id/order_hasil_tipeservice"
-                android:layout_marginTop="10dp"
-                android:text="Lokasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/order_lokasi"
-                android:fontFamily="@font/sfbold"
-                android:textSize="16dp"/>
+               <TextView
+                   android:id="@+id/order_hasil_tipeservice"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/order_tipeservice"
+                   android:text="Tambal Ban"
+                   android:fontFamily="@font/sf"
+                   android:textSize="14dp"
+                   />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/order_lokasi"
-                android:text="Jalan Pasar Kaliki No. 27 (Samping Ruko Cat Tembok)"
-                android:ellipsize="end"
-                android:fontFamily="@font/sf"
-                android:textSize="14dp"
-                />
+               <TextView
+                   android:layout_below="@id/order_hasil_tipeservice"
+                   android:layout_marginTop="10dp"
+                   android:text="Lokasi"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/order_lokasi"
+                   android:fontFamily="@font/sfbold"
+                   android:textSize="16dp"/>
 
-            <RelativeLayout
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/order_call"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Call"
-                    android:fontFamily="@font/sfbold"
-                    android:background="@drawable/button_login"
-                    android:textColor="#fff"/>
+               <TextView
+                   android:id="@+id/order_hasil_lokasi"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/order_lokasi"
+                   android:text="Jalan Pasar Kaliki No. 27 (Samping Ruko Cat Tembok)"
+                   android:ellipsize="end"
+                   android:fontFamily="@font/sf"
+                   android:textSize="14dp"
+                   />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/order_finish"
-                    android:layout_marginTop="15dp"
-                    android:text="FINISH"
-                    android:layout_centerInParent="true"
-                    android:textSize="15dp"
-                    android:textColor="#3DB24B"
-                    android:layout_below="@id/order_call"/>
-            </RelativeLayout>
+               <TextView
+                   android:layout_below="@id/order_hasil_lokasi"
+                   android:layout_marginTop="10dp"
+                   android:text="Catatan"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/order_catatan"
+                   android:fontFamily="@font/sfbold"
+                   android:textSize="16dp"/>
+
+               <TextView
+                   android:id="@+id/order_hasil_catatan"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/order_catatan"
+                   android:text="Catatan"
+                   android:ellipsize="end"
+                   android:fontFamily="@font/sf"
+                   android:textSize="14dp"
+                   />
 
 
 
-        </RelativeLayout>
 
-    </RelativeLayout>
+               <RelativeLayout
+                   android:layout_alignParentBottom="true"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <Button
+                       android:id="@+id/order_call"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="10dp"
+                       android:text="Call"
+                       android:fontFamily="@font/sfbold"
+                       android:background="@drawable/button_login"
+                       android:textColor="#fff"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/order_finish"
+                       android:layout_marginTop="15dp"
+                       android:text="FINISH"
+                       android:layout_centerInParent="true"
+                       android:textSize="15dp"
+                       android:textColor="#3DB24B"
+                       android:layout_below="@id/order_call"/>
+               </RelativeLayout>
+
+           </RelativeLayout>
+
+       </RelativeLayout>
+   </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

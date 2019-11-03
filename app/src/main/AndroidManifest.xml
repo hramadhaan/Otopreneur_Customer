@@ -1,55 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.customer_otopedia">
+    package="com.otopreneur.otopreneur_customer">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="com.otopreneur.otopreneur_customer.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_otopreneur"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Activity.Activity.Fitur.History_Order.DetailHistory"></activity>
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.WaitingActivity"></activity>
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.PackageOrder.HasilCreateOrder" android:parentActivityName=".Activity.Activity.Fitur.DaftarBengkel" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.InputNomorTelp" android:parentActivityName="com.otopreneur.otopreneur_customer.MainActivity" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.History_Order.DetailHistory" android:parentActivityName=".Activity.Activity.Fitur.History_Order.HistoryOrderActivity" />
         <activity
-            android:name=".Activity.Activity.Fitur.History_Order.HistoryOrderActivity"
-            android:parentActivityName=".Activity.Activity.Dashboard" />
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.History_Order.HistoryOrderActivity"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard" />
         <activity
-            android:name=".Activity.Activity.Fitur.Rating.RatingActivity"
-            android:parentActivityName=".Activity.Activity.Fitur.Order" />
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Rating.RatingActivity"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Order" />
         <activity
-            android:name=".Activity.Activity.Fitur.Service_Motor.InputServiceMotor"
-            android:parentActivityName=".Activity.Activity.Fitur.Service_Motor.MenuServiceMotor" />
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Service_Motor.InputServiceMotor"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Service_Motor.MenuServiceMotor" />
         <activity
-            android:name=".Activity.Activity.Fitur.Service_Motor.MenuServiceMotor"
-            android:parentActivityName=".Activity.Activity.Dashboard" />
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Service_Motor.MenuServiceMotor"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard" />
         <activity
-            android:name=".Activity.Activity.Fitur.Order"
-            android:parentActivityName=".Activity.Activity.Fitur.DaftarBengkel" />
-        <activity android:name=".Activity.Activity.Fitur.DaftarBengkel" />
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Order"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.DaftarBengkel" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.DaftarBengkel"
+            android:parentActivityName=".Activity.Activity.Fitur.InputTambalBan"/>
         <activity
-            android:name=".Activity.Activity.Fitur.InputTambalBan"
-            android:parentActivityName=".Activity.Activity.Fitur.Tambal_Ban" />
-        <activity android:name=".Activity.Activity.Menu" />
-        <activity android:name=".Activity.Activity.Detail" />
-        <activity android:name=".Activity.Activity.Coba">
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.InputTambalBan"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Tambal_Ban" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Menu" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Detail" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Coba" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Settings" android:parentActivityName=".Activity.Activity.Dashboard" />
+        <activity
+            android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Tambal_Ban"
+            android:parentActivityName="com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard" />
+        <activity android:name="com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard" />
+        <activity android:name="com.otopreneur.otopreneur_customer.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.Activity.Fitur.Settings" />
-        <activity
-            android:name=".Activity.Activity.Fitur.Tambal_Ban"
-            android:parentActivityName=".Activity.Activity.Dashboard" />
-        <activity android:name=".Activity.Activity.Dashboard" />
-        <activity android:name=".MainActivity">
-
-        </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

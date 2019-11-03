@@ -5,152 +5,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/utama"
     tools:context=".Activity.Activity.Fitur.Service_Motor.MenuServiceMotor">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/servicemotor_appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:background="@null"
+        android:layout_height="?attr/actionBarSize"
+        app:elevation="0dp">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/servicemotor_toolbar"
             android:layout_width="match_parent"
-            app:theme="@style/Widget.AppCompat.ActionBar.TabBar"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_height="wrap_content">
-            <RelativeLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/servicemotor_judul"
-                    android:layout_centerHorizontal="true"
-                    android:text="Service Motor"
-                    android:textSize="18dp"
-                    android:textColor="#282F39"
-                    android:fontFamily="@font/sfbold"/>
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/servicemotor_judul"
+                android:text="Service Motor"
+                android:textSize="18dp"
+                android:fontFamily="@font/sfbold"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_marginRight="?android:attr/actionBarSize"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:layout_below="@id/servicemotor_appbar"
         android:layout_width="match_parent"
-        android:background="#F2F5F7"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/servicemotor_linear_atas"
+       <LinearLayout
+           android:id="@+id/servicemotor_linear"
+           android:layout_marginTop="30dp"
+           android:layout_marginHorizontal="20dp"
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_height="wrap_content">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Service Motor"
+               android:fontFamily="@font/sfbold"
+               android:textSize="32dp"
+               android:textColor="#fff"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Silahkan pilih Tipe Service"
+               android:fontFamily="@font/sf"
+               android:textSize="22dp"
+               android:textColor="#fff"/>
+       </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/servicemotor_recyclerview"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/servicemotor_cv_gantioli"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/oli"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ganti Oli"
-                        android:fontFamily="@font/sfbold"
-                        android:layout_marginTop="20dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/servicemotor_cv_tuneup"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/tuneuo"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tune Up"
-                        android:fontFamily="@font/sfbold"
-                        android:layout_marginTop="20dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_below="@id/servicemotor_linear_atas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/servicemotor_cv_kampasrem"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/brake"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kampas Rem"
-                        android:fontFamily="@font/sfbold"
-                        android:layout_marginTop="20dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/servicemotor_cv_other"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/other"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Other"
-                        android:fontFamily="@font/sfbold"
-                        android:layout_marginTop="20dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_below="@id/servicemotor_linear"/>
 
     </RelativeLayout>
 

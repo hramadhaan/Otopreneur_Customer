@@ -98,8 +98,8 @@
                 app:srb_clickable="true"
                 app:srb_scrollable="true"
                 app:srb_clearRatingEnabled="true"
-                app:srb_drawableEmpty="@drawable/empty"
-                app:srb_drawableFilled="@drawable/star"/>
+                app:srb_drawableEmpty="@drawable/star_off"
+                app:srb_drawableFilled="@drawable/star_on"/>
 
             <Button
                 android:id="@+id/rating_button"
