@@ -149,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()){
                             hasilToken = response.body().getToken();
                             if (hasilToken.equals("null")){
+                                signOut();
+                                signIn.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(MainActivity.this,"Account Anda Belum Terdaftar",Toast.LENGTH_LONG).show();
                             } else {
                                 signIn.setVisibility(View.VISIBLE);
@@ -165,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(MainActivity.this,"Gagal mendapatkan token",Toast.LENGTH_LONG).show();
                             Log.d("Gagal Token ",response.message());
+                            signOut();
                         }
                     }
 
@@ -172,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(Call<Token> call, Throwable t) {
                         signIn.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.INVISIBLE);
+                        signOut();
                         Toast.makeText(MainActivity.this,"Failure "+t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
