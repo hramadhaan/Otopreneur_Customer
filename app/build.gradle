@@ -5,8 +5,9 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.otopreneur.otopreneur_customer"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 29
+        multiDexEnabled true
         versionCode 4
         versionName "1.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -63,6 +64,12 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     implementation 'com.qhutch.bottomsheetlayout:bottomsheetlayout:0.1.9'
+
+//    MAPS
+    implementation 'com.google.android.libraries.places:places:2.0.0'
+
+//    MULTIDEX
+    implementation 'com.android.support:multidex:1.0.3'
 }
 //apply plugin: 'com.google.gms.google-services'
 

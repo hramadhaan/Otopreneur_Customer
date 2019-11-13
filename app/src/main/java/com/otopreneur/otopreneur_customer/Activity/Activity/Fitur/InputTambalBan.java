@@ -1,5 +1,6 @@
 package com.otopreneur.otopreneur_customer.Activity.Activity.Fitur;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -11,20 +12,32 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.otopreneur.otopreneur_customer.Data.AppState;
 import com.otopreneur.otopreneur_customer.Model.Userdata;
 import com.otopreneur.otopreneur_customer.Network.ApiService;
 import com.otopreneur.otopreneur_customer.R;
 import com.otopreneur.otopreneur_customer.Utils.ApiUtils;
 
+import java.util.Arrays;
+
 public class InputTambalBan extends AppCompatActivity {
 
     Button button;
     Toolbar toolbar;
     TextView judul;
+    String apiKey = "AIzaSyBCcoI84ejH630Z_csKtCCdgc7bIPsGcnQ";
+    PlacesClient placesClient;
 
-    EditText tipe,catatan,lokasi;
+    EditText tipe,catatan;
 
     String vehicle,tambalBan,tipeKendaraan,catatanKendaraan,lokasiKendaraan;
 
@@ -38,6 +51,27 @@ public class InputTambalBan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_tambal_ban);
 
+        if (!Places.isInitialized()){
+            Places.initialize(getApplicationContext(),apiKey);
+        }
+
+        placesClient = Places.createClient(this);
+        final AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.tb_input_fragment);
+        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.NAME));
+        autocompleteSupportFragment.setCountry("ID");
+        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                final String alamat = place.getName();
+                Toast.makeText(InputTambalBan.this,alamat,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+
+            }
+        });
+
         appState = AppState.getInstance();
         apiService = ApiUtils.getApiService();
 
@@ -45,7 +79,7 @@ public class InputTambalBan extends AppCompatActivity {
         judul = toolbar.findViewById(R.id.input_tb_judul);
         tipe = findViewById(R.id.tb_input_nama_kendaraan);
         catatan = findViewById(R.id.tb_input_catatan);
-        lokasi = findViewById(R.id.tb_input_lokasi);
+//        lokasi = findViewById(R.id.tb_input_lokasi);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -75,7 +109,7 @@ public class InputTambalBan extends AppCompatActivity {
 
                 tipeKendaraan = tipe.getText().toString().trim();
                 catatanKendaraan = catatan.getText().toString().trim();
-                lokasiKendaraan = lokasi.getText().toString().trim();
+//                lokasiKendaraan = lokasi.getText().toString().trim();
 
                 Intent daftarBengkel = new Intent(InputTambalBan.this,DaftarBengkel.class);
                 daftarBengkel.putExtra("currentUser",id_customer);
