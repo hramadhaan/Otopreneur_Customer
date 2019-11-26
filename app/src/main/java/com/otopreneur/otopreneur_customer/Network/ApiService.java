@@ -3,9 +3,12 @@ package com.otopreneur.otopreneur_customer.Network;
 import com.otopreneur.otopreneur_customer.Model.ChangeStatus;
 import com.otopreneur.otopreneur_customer.Model.History;
 import com.otopreneur.otopreneur_customer.Model.Invoice;
+import com.otopreneur.otopreneur_customer.Model.Resend;
 import com.otopreneur.otopreneur_customer.Model.Roles;
 import com.otopreneur.otopreneur_customer.Model.Service;
+import com.otopreneur.otopreneur_customer.Model.Status;
 import com.otopreneur.otopreneur_customer.Model.Token;
+import com.otopreneur.otopreneur_customer.Model.Userdata;
 import com.otopreneur.otopreneur_customer.Model.Variant;
 import com.otopreneur.otopreneur_customer.Model.getStatus;
 
@@ -26,7 +29,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("getAPI/createUser/")
-    Call<Token> createUser(
+    Call<Status> createUser(
             @Field("nama") String nama,
             @Field("foto") String foto,
             @Field("email") String email,
@@ -43,7 +46,9 @@ public interface ApiService {
             @Field("id_customer") int id_customer,
             @Field("note") String note,
             @Field("venichleSeries") String venichleSeries,
-            @Field("location") String location
+            @Field("location") String location,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude
     );
 
     @GET("getAPI/getService/{service_code}/{venichle}/")
@@ -63,5 +68,30 @@ public interface ApiService {
 
     @GET("getAPI/getServiceVariant")
     Call<ArrayList<Variant>> getVariant();
+
+    @GET("getAPI/verifyOTP/{email}/{otp}")
+    Call<Token> verifyOTP(@Path("email") String email,@Path("otp") String otp);
+
+    @GET("getAPI/editPhoneNumber/{email}/{telp}")
+    Call<Status> editPhoneNumber(
+            @Path("email") String email,
+            @Path("telp") String telp
+    );
+
+    @GET("getAPI/resendOTP/{email}")
+    Call<Resend> resendOTP(
+            @Path("email") String email
+    );
+
+    @GET("getAPI/getSpecificCustomer/{id}")
+    Call<Userdata> getSpesificCustomer(
+            @Path("id") int id
+    );
+
+    @GET("getAPI/addRating/{invoice}/{rating}")
+    Call<Status> setRating(
+            @Path("invoice") int invoice,
+            @Path("rating") int rating
+    );
 
 }

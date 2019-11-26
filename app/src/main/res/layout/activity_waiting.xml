@@ -15,6 +15,39 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sedang menghubungi"
+                    android:fontFamily="@font/sf"
+                    android:textColor="#aaa"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+            <TextView
+                android:id="@+id/waiting_nama_bengkel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Bengkel"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/sfbold"
+                android:textSize="22dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tarik layar untuk refresh"
+                android:fontFamily="@font/sf"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:textColor="#aaa"/>
+
+        </LinearLayout>
         <com.skyfishjy.library.RippleBackground
             android:layout_centerInParent="true"
             xmlns:android="http://schemas.android.com/apk/res/android"

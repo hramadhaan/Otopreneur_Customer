@@ -29,7 +29,7 @@ public class WaitingActivity extends AppCompatActivity {
 
     RippleBackground rippleBackground;
     ImageView gambar;
-    TextView batalkan;
+    TextView batalkan,nama_bengkel;
 
     int invoice_no;
 
@@ -56,6 +56,9 @@ public class WaitingActivity extends AppCompatActivity {
         gambar = findViewById(R.id.waiting_gambar);
         rippleBackground.startRippleAnimation();
 
+        nama_bengkel = findViewById(R.id.waiting_nama_bengkel);
+        nama_bengkel.setText(appState.getInvoice().getVendor());
+
         refreshLayout = findViewById(R.id.waiting_refresh);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -75,7 +78,7 @@ public class WaitingActivity extends AppCompatActivity {
         Intent getIntent = getIntent();
 //        hasil_status = getIntent.getStringExtra("status");
 
-        Toast.makeText(WaitingActivity.this,appState.provideInvoice(),Toast.LENGTH_LONG).show();
+//        Toast.makeText(WaitingActivity.this,appState.provideInvoice(),Toast.LENGTH_LONG).show();
 
         gambar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +138,13 @@ public class WaitingActivity extends AppCompatActivity {
                         appState.setIsPesanan(true);
                         startActivity(new Intent(WaitingActivity.this,Order.class));
                         finish();
+                    } else if (hasil_status.equals("finished")){
+                        Toast.makeText(WaitingActivity.this,"Pesanan Anda telah Selesai",Toast.LENGTH_LONG).show();
+                        AppState.getInstance().hapusOrder();
+                        startActivity(new Intent(WaitingActivity.this,Dashboard.class));
+                        finish();
                     } else {
-                        Toast.makeText(WaitingActivity.this,"Pesanan Sedang Di Proses",Toast.LENGTH_LONG).show();
+                        Toast.makeText(WaitingActivity.this,"Sebentar ya, Pesanan Anda sedang kami cari",Toast.LENGTH_LONG).show();
                     }
                 }
             }

@@ -116,6 +116,8 @@
                    android:textSize="16dp"/>
 
                <TextView
+                   android:textColor="#ed1c24"
+                   android:textStyle="bold"
                    android:id="@+id/order_hasil_lokasi"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -172,7 +174,7 @@
                        android:text="FINISH"
                        android:layout_centerInParent="true"
                        android:textSize="15dp"
-                       android:textColor="#3DB24B"
+                       android:textColor="#000"
                        android:layout_below="@id/order_call"/>
                </RelativeLayout>
 

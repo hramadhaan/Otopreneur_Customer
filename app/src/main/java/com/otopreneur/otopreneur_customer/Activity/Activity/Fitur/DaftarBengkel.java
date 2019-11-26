@@ -36,7 +36,7 @@ public class DaftarBengkel extends AppCompatActivity {
 
     RetrofitClient retrofitClient;
 
-    String vehicle,tambalBan,tipeKendaraan,catatanKendaraan,lokasiKendaraan;
+    String vehicle,tambalBan,tipeKendaraan,catatanKendaraan,lokasiKendaraan,latitude,longtitude;
     int id_customer;
 
     private AppState appState;
@@ -74,7 +74,11 @@ public class DaftarBengkel extends AppCompatActivity {
         tipeKendaraan = getIntent.getStringExtra("tipeKendaraan");
         catatanKendaraan = getIntent.getStringExtra("catatanKendaraan");
         lokasiKendaraan = getIntent.getStringExtra("lokasiKendaraan");
+        latitude = getIntent.getStringExtra("latitude");
+        longtitude = getIntent.getStringExtra("longtitude");
         refresh();
+
+        Toast.makeText(DaftarBengkel.this,latitude,Toast.LENGTH_LONG).show();
     }
 
     private void refresh() {
@@ -86,7 +90,7 @@ public class DaftarBengkel extends AppCompatActivity {
 //                    Toast.makeText(DaftarBengkel.this,"Berhasil dapat data",Toast.LENGTH_LONG).show();
                     ArrayList<Service> serviceList = response.body();
 //                    Toast.makeText(DaftarBengkel.this,String.valueOf(serviceList.size()),Toast.LENGTH_LONG).show();
-                    mAdapter = new DaftarBengkelAdapter(getApplicationContext(),tipeKendaraan,catatanKendaraan,lokasiKendaraan,serviceList);
+                    mAdapter = new DaftarBengkelAdapter(getApplicationContext(),tipeKendaraan,catatanKendaraan,lokasiKendaraan,latitude,longtitude,serviceList);
                     item_bengkel.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
                     if (mAdapter.getItemCount()==0){

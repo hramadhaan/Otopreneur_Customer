@@ -61,7 +61,7 @@
         android:layout_marginVertical="0dp"
         android:paddingVertical="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_below="@id/settings_tengah"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="-3dp"
@@ -70,6 +70,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginHorizontal="40dp">
 
             <TextView
@@ -87,7 +88,7 @@
                 android:layout_below="@id/settings_data"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/sf"
-                android:text="Ubah Password"
+                android:text="Ubah Nomor Handphone"
                 android:textSize="18dp" />
 
             <TextView

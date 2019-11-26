@@ -1,60 +1,50 @@
-package com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Rating;
+package com.otopreneur.otopreneur_customer.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatRatingBar;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RatingBar;
-import android.widget.TabHost;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard;
 import com.otopreneur.otopreneur_customer.Data.AppState;
 import com.otopreneur.otopreneur_customer.Model.Status;
 import com.otopreneur.otopreneur_customer.Network.ApiService;
 import com.otopreneur.otopreneur_customer.R;
 import com.otopreneur.otopreneur_customer.Utils.ApiUtils;
-import com.willy.ratingbar.BaseRatingBar;
-import com.willy.ratingbar.ScaleRatingBar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RatingActivity extends AppCompatActivity {
+public class GantiNomor extends AppCompatActivity {
 
-    AppCompatRatingBar ratingBar;
-
-    Button rate;
-    String invoice;
-
-    Toolbar toolbar;
-    TextView judul;
+    EditText gantinomor;
+    Button submit;
+    String email;
+    ImageView gambar;
 
     private AppState appState;
     private ApiService apiService;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating);
+        setContentView(R.layout.activity_ganti_nomor);
 
         appState = AppState.getInstance();
         apiService = ApiUtils.getApiService();
-
-        toolbar = findViewById(R.id.rating_toolbar);
-        judul = toolbar.findViewById(R.id.rating_judul);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (android.os.Build.VERSION.SDK_INT >= 21){
             Window window = this.getWindow();
@@ -63,39 +53,41 @@ public class RatingActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.color));
         }
 
-        ratingBar = findViewById(R.id.simpleRatingBar);
+        gambar = findViewById(R.id.ubahnomor_image);
+        Glide.with(getApplicationContext()).asBitmap().load(AppState.getInstance().getUser().getAvatar()).apply(RequestOptions.circleCropTransform()).into(gambar);
 
-        Intent intent = getIntent();
-        invoice = intent.getStringExtra("invoice");
+        toolbar = findViewById(R.id.ubahnomor_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        judul.setText("Order : "+invoice);
+        gantinomor = findViewById(R.id.ubahnomor_nomor);
+        submit=findViewById(R.id.ubahnomor_submit);
 
-        rate = findViewById(R.id.rating_button);
-        rate.setOnClickListener(new View.OnClickListener() {
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                int ratinghasil = Math.round(ratingBar.getRating());
-                int invoiceNo = Integer.parseInt(invoice);
-                Log.d("RatingActivity = ","Rating = "+ratinghasil+"\n"+invoice);
-                Call<Status> statusCall = apiService.setRating(invoiceNo,ratinghasil);
+            public void onClick(View v) {
+                email = AppState.getInstance().getUser().getEmail();
+                Call<Status> statusCall = apiService.editPhoneNumber(email,gantinomor.getText().toString());
                 statusCall.enqueue(new Callback<Status>() {
                     @Override
                     public void onResponse(Call<Status> call, Response<Status> response) {
                         if (response.isSuccessful()){
                             if (response.body().getStatus().equals("success")){
-                                startActivity(new Intent(RatingActivity.this,Dashboard.class));
+                                Toast.makeText(GantiNomor.this,"Berhasil Mengganti Nomor",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(GantiNomor.this, Dashboard.class));
                                 finish();
                             } else {
-                                Toast.makeText(RatingActivity.this,"Gagal Mengirim Response",Toast.LENGTH_LONG).show();
+                                Toast.makeText(GantiNomor.this,"Gagal Mengganti Nomor Telpon",Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(RatingActivity.this,response.message(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(GantiNomor.this,response.message(),Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Status> call, Throwable t) {
-                        Toast.makeText(RatingActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(GantiNomor.this,t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
             }

@@ -19,6 +19,12 @@ public class Invoice {
     @SerializedName("location")
     @Expose
     private String location;
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
     @SerializedName("note")
     @Expose
     private String note;
@@ -37,27 +43,37 @@ public class Invoice {
     @SerializedName("service")
     @Expose
     private String service;
+    @SerializedName("rating")
+    @Expose
+    private Integer rating;
     @SerializedName("venichle_series")
     @Expose
     private String venichleSeries;
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("updated_at")
+    @Expose
+    private Object updatedAt;
 
-    public Invoice(Integer id, Integer invoiceNo, String venicheType, Integer customer, String location, String note, Integer vendor, Object price, Object duration, String time, String service, String venichleSeries, String status) {
+    public Invoice(Integer id, Integer invoiceNo, String venicheType, Integer customer, String location, String latitude, String longitude, String note, Integer vendor, Object price, Object duration, String time, String service, Integer rating, String venichleSeries, String status, Object updatedAt) {
         this.id = id;
         this.invoiceNo = invoiceNo;
         this.venicheType = venicheType;
         this.customer = customer;
         this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.note = note;
         this.vendor = vendor;
         this.price = price;
         this.duration = duration;
         this.time = time;
         this.service = service;
+        this.rating = rating;
         this.venichleSeries = venichleSeries;
         this.status = status;
+        this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
@@ -98,6 +114,22 @@ public class Invoice {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getNote() {
@@ -148,6 +180,14 @@ public class Invoice {
         this.service = service;
     }
 
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
     public String getVenichleSeries() {
         return venichleSeries;
     }
@@ -162,5 +202,13 @@ public class Invoice {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Object getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Object updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

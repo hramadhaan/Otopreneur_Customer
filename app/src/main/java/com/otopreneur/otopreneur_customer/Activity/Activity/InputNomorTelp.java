@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.otopreneur.otopreneur_customer.Data.AppState;
 import com.otopreneur.otopreneur_customer.MainActivity;
 import com.otopreneur.otopreneur_customer.Model.Roles;
+import com.otopreneur.otopreneur_customer.Model.Status;
 import com.otopreneur.otopreneur_customer.Model.Token;
 import com.otopreneur.otopreneur_customer.Network.ApiService;
 import com.otopreneur.otopreneur_customer.R;
@@ -105,7 +106,6 @@ public class InputNomorTelp extends AppCompatActivity {
             email.setText(personEmail);
             Glide.with(this).load(personPhoto).into(imageView);
         }
-
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,33 +116,46 @@ public class InputNomorTelp extends AppCompatActivity {
                 hasilFoto = String.valueOf(personPhoto);
                 hasilPhone = phone.getText().toString();
 
-                Call<Token> call = apiService.createUser(hasilNama,hasilFoto
+                daftar.setEnabled(false);
+
+                Call<Status> call = apiService.createUser(hasilNama,hasilFoto
                         ,hasilEmail,hasilPhone);
-                call.enqueue(new Callback<Token>() {
+                call.enqueue(new Callback<Status>() {
                     @Override
-                    public void onResponse(Call<Token> call, Response<Token> response) {
+                    public void onResponse(Call<Status> call, Response<Status> response) {
                         if (response.isSuccessful()){
-                            hasilToken = response.body().getToken();
-                            if (hasilToken.equals("null")){
-                                Toast.makeText(InputNomorTelp.this,"Email Exist or Phone Exist",Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(InputNomorTelp.this,"Berhasil Membuat Akun",Toast.LENGTH_LONG).show();
+                            if (response.body().getStatus().equals("success")){
+                                Intent intent = new Intent(InputNomorTelp.this,OTPActivity.class);
+                                intent.putExtra("email",hasilEmail);
+                                startActivity(intent);
                                 daftar.setVisibility(View.VISIBLE);
                                 progressBar.setVisibility(View.INVISIBLE);
-                                daftar.setEnabled(false);
-                                appState.setToken(hasilToken);
-                                appState.setIsLoggedIn(true);
-                                Log.d("Token : ",hasilToken);
-                                getuser();
+                                daftar.setEnabled(true);
+                                signOut();
+                            } else if (response.body().getStatus().equals("failed")){
+                                daftar.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.INVISIBLE);
+                                daftar.setEnabled(true);
+                                Toast.makeText(InputNomorTelp.this,"Gagal Mendaftarkan Akun",Toast.LENGTH_LONG).show();
+                            } else {
+                                daftar.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.INVISIBLE);
+                                daftar.setEnabled(true);
+                                Toast.makeText(InputNomorTelp.this,"Terjadi Error",Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(InputNomorTelp.this,"Gagal mendapatkan token",Toast.LENGTH_LONG).show();
-                            Log.d("Gagal Token ",response.message());
+                            daftar.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.INVISIBLE);
+                            daftar.setEnabled(true);
+                            Toast.makeText(InputNomorTelp.this,response.message(),Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Token> call, Throwable t) {
+                    public void onFailure(Call<Status> call, Throwable t) {
+                        daftar.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        daftar.setEnabled(false);
                         Toast.makeText(InputNomorTelp.this,"Failure "+t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });

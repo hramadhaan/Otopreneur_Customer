@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,12 +35,12 @@ public class InputTambalBan extends AppCompatActivity {
     Button button;
     Toolbar toolbar;
     TextView judul;
-    String apiKey = "AIzaSyBCcoI84ejH630Z_csKtCCdgc7bIPsGcnQ";
+    String apiKey = "AIzaSyAlDUmTEgkKRuPntrA5bMy4BAlPcEdgV_o";
     PlacesClient placesClient;
 
     EditText tipe,catatan;
 
-    String vehicle,tambalBan,tipeKendaraan,catatanKendaraan,lokasiKendaraan;
+    String vehicle,tambalBan,tipeKendaraan,catatanKendaraan,lokasiKendaraan,hasilLatitude,hasilLongtitude;
 
     private AppState appState;
     private ApiService apiService;
@@ -47,7 +48,7 @@ public class InputTambalBan extends AppCompatActivity {
     int id_customer;
     
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_tambal_ban);
 
@@ -57,18 +58,20 @@ public class InputTambalBan extends AppCompatActivity {
 
         placesClient = Places.createClient(this);
         final AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.tb_input_fragment);
-        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.NAME));
+        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.NAME,Place.Field.LAT_LNG));
         autocompleteSupportFragment.setCountry("ID");
         autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(@NonNull Place place) {
-                final String alamat = place.getName();
-                Toast.makeText(InputTambalBan.this,alamat,Toast.LENGTH_LONG).show();
-            }
+                final LatLng latLng = place.getLatLng();
+                lokasiKendaraan = place.getName();
+                hasilLongtitude = String.valueOf(latLng.longitude);
+                hasilLatitude = String.valueOf(latLng.latitude);
+                }
 
             @Override
             public void onError(@NonNull Status status) {
-
+                Toast.makeText(InputTambalBan.this,status.getStatusMessage(),Toast.LENGTH_LONG).show();
             }
         });
 
@@ -118,6 +121,8 @@ public class InputTambalBan extends AppCompatActivity {
                 daftarBengkel.putExtra("tipeKendaraan",tipeKendaraan);
                 daftarBengkel.putExtra("catatanKendaraan",catatanKendaraan);
                 daftarBengkel.putExtra("lokasiKendaraan",lokasiKendaraan);
+                daftarBengkel.putExtra("latitude",hasilLatitude);
+                daftarBengkel.putExtra("longtitude",hasilLongtitude);
                 startActivity(daftarBengkel);
             }
         });

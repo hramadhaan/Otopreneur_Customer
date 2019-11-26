@@ -39,31 +39,6 @@
         android:background="#EAECEE">
 
         <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:background="#fff"
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rating_harga"
-                android:text="Rp. 50.000"
-                android:textColor="#3DB24B"
-                android:fontFamily="@font/sfbold"
-                android:textSize="24dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Comment"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="15dp"
-                android:layout_marginHorizontal="30dp"/>
-        </RelativeLayout>
-
-        <RelativeLayout
             android:layout_width="match_parent"
             android:background="#fff"
             android:layout_height="250dp"
@@ -79,27 +54,17 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"/>
 
-            <com.willy.ratingbar.ScaleRatingBar
+            <androidx.appcompat.widget.AppCompatRatingBar
                 android:layout_below="@id/rating_tv_how"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+                android:numStars="5"
+                android:stepSize="1"
+                android:rating="5"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/simpleRatingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srb_numStars="5"
-                app:srb_minimumStars="1"
-                app:srb_rating="3"
-                app:srb_starWidth="50dp"
-                app:srb_starHeight="50dp"
-                app:srb_starPadding="2dp"
-                app:srb_stepSize="1"
-                app:srb_isIndicator="false"
-                app:srb_clickable="true"
-                app:srb_scrollable="true"
-                app:srb_clearRatingEnabled="true"
-                app:srb_drawableEmpty="@drawable/star_off"
-                app:srb_drawableFilled="@drawable/star_on"/>
+                android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/rating_button"

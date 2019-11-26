@@ -79,13 +79,18 @@
                 android:fontFamily="@font/sfbold"
                 android:textSize="16dp"
                 android:id="@+id/sm_lokasi"/>
-            <EditText
+            <LinearLayout
+                android:id="@+id/tb_input_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sm_input_lokasi"
                 android:layout_below="@id/sm_lokasi"
-                android:hint="Masukkan Lokasi"/>
-
+                android:hint="Masukkan Lokasi">
+                <fragment
+                    android:id="@+id/tb_input_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+            </LinearLayout>
             <Button
                 android:id="@+id/sm_button"
                 android:layout_width="match_parent"

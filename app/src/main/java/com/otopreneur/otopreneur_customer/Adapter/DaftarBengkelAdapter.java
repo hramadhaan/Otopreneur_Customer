@@ -30,14 +30,18 @@ public class DaftarBengkelAdapter extends RecyclerView.Adapter<DaftarBengkelAdap
     String tipeAdapter;
     String catatanAdapter;
     String lokasiAdapter;
+    String latitude;
+    String longtitude;
     ArrayList<Service> mService;
 
 
-    public DaftarBengkelAdapter(Context context, String tipeAdapter, String catatanAdapter, String lokasiAdapter, ArrayList<Service> mService) {
+    public DaftarBengkelAdapter(Context context, String tipeAdapter, String catatanAdapter, String lokasiAdapter, String latitude, String longtitude, ArrayList<Service> mService) {
         this.context = context;
         this.tipeAdapter = tipeAdapter;
         this.catatanAdapter = catatanAdapter;
         this.lokasiAdapter = lokasiAdapter;
+        this.latitude = latitude;
+        this.longtitude = longtitude;
         this.mService = mService;
     }
 
@@ -71,6 +75,8 @@ public class DaftarBengkelAdapter extends RecyclerView.Adapter<DaftarBengkelAdap
                 intent.putExtra("catatanKendaraana",catatanAdapter);
                 intent.putExtra("lokasiKendaraana",lokasiAdapter);
                 intent.putExtra("namaVendor",mService.get(position).getVendor().getName());
+                intent.putExtra("latitude",latitude);
+                intent.putExtra("longtitude",longtitude);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 

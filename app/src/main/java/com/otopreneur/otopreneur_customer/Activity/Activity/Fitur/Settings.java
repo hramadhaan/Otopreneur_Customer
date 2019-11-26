@@ -21,12 +21,14 @@ import com.otopreneur.otopreneur_customer.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.otopreneur.otopreneur_customer.Settings.DataPersonal;
+import com.otopreneur.otopreneur_customer.Settings.GantiNomor;
 
 
 public class Settings extends AppCompatActivity {
 
     ImageView avatar;
-    TextView name, logout;
+    TextView name, logout,data,nomor;
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -53,6 +55,21 @@ public class Settings extends AppCompatActivity {
         avatar = findViewById(R.id.settings_image);
         name = findViewById(R.id.settings_nama);
         logout = findViewById(R.id.settings_logout);
+
+        data = findViewById(R.id.settings_data);
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Settings.this, DataPersonal.class));
+            }
+        });
+        nomor = findViewById(R.id.settings_ganti);
+        nomor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Settings.this, GantiNomor.class));
+            }
+        });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

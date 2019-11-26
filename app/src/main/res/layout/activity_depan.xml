@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/depan_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OTOPEDIA"
@@ -17,6 +18,14 @@
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/depan_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/powered" />
 
     <RelativeLayout
         android:layout_alignParentBottom="true"

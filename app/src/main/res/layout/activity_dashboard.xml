@@ -59,6 +59,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:textColor="#fff"/>
                 <TextView
+                    android:id="@+id/dashboard_selamatdatang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Selamat datang di Otopreneur"
@@ -67,6 +68,15 @@
                     android:fontFamily="@font/sf"
                     android:textSize="22dp"
                     android:textColor="#fff"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Powered by PERTAMAX"
+                    android:layout_below="@id/dashboard_selamatdatang"
+                    android:fontFamily="@font/sf"
+                    android:textSize="20dp"
+                    android:textColor="#fff"
+                    android:layout_marginHorizontal="20dp"/>
             </RelativeLayout>
 
             <RelativeLayout

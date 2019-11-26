@@ -24,10 +24,19 @@ public class Userdata {
     private String avatar;
     @SerializedName("email_verified_at")
     @Expose
-    private Object emailVerifiedAt;
+    private String emailVerifiedAt;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("remember_token")
     @Expose
     private Object rememberToken;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("otp_code")
+    @Expose
+    private Integer otpCode;
     @SerializedName("settings")
     @Expose
     private String settings;
@@ -36,9 +45,9 @@ public class Userdata {
     private Object createdAt;
     @SerializedName("updated_at")
     @Expose
-    private Object updatedAt;
+    private String updatedAt;
 
-    public Userdata(Integer id, Integer roleId, String name, String email, String phone, String avatar, Object emailVerifiedAt, Object rememberToken, String settings, Object createdAt, Object updatedAt) {
+    public Userdata(Integer id, Integer roleId, String name, String email, String phone, String avatar, String emailVerifiedAt, String password, Object rememberToken, String status, Integer otpCode, String settings, Object createdAt, String updatedAt) {
         this.id = id;
         this.roleId = roleId;
         this.name = name;
@@ -46,7 +55,10 @@ public class Userdata {
         this.phone = phone;
         this.avatar = avatar;
         this.emailVerifiedAt = emailVerifiedAt;
+        this.password = password;
         this.rememberToken = rememberToken;
+        this.status = status;
+        this.otpCode = otpCode;
         this.settings = settings;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -100,12 +112,20 @@ public class Userdata {
         this.avatar = avatar;
     }
 
-    public Object getEmailVerifiedAt() {
+    public String getEmailVerifiedAt() {
         return emailVerifiedAt;
     }
 
-    public void setEmailVerifiedAt(Object emailVerifiedAt) {
+    public void setEmailVerifiedAt(String emailVerifiedAt) {
         this.emailVerifiedAt = emailVerifiedAt;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Object getRememberToken() {
@@ -114,6 +134,22 @@ public class Userdata {
 
     public void setRememberToken(Object rememberToken) {
         this.rememberToken = rememberToken;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getOtpCode() {
+        return otpCode;
+    }
+
+    public void setOtpCode(Integer otpCode) {
+        this.otpCode = otpCode;
     }
 
     public String getSettings() {
@@ -132,11 +168,11 @@ public class Userdata {
         this.createdAt = createdAt;
     }
 
-    public Object getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Object updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

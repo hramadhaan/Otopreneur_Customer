@@ -6,6 +6,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard;
+import com.otopreneur.otopreneur_customer.Activity.Activity.Fitur.Rating.RatingActivity;
 import com.otopreneur.otopreneur_customer.Data.AppState;
 import com.otopreneur.otopreneur_customer.Model.ChangeStatus;
 import com.otopreneur.otopreneur_customer.Model.getStatus;
@@ -67,6 +69,7 @@ public class Order extends AppCompatActivity {
         tipekendaraan = findViewById(R.id.order_hasil_tipekendaraan);
         tipeservice = findViewById(R.id.order_hasil_tipeservice);
         lokasi = findViewById(R.id.order_hasil_lokasi);
+
         catatan = findViewById(R.id.order_hasil_catatan);
 
         toolbar = findViewById(R.id.order_toolbar);
@@ -82,8 +85,6 @@ public class Order extends AppCompatActivity {
 
         dialog = new Dialog(this);
         finish = findViewById(R.id.order_finish);
-
-
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,13 +124,13 @@ public class Order extends AppCompatActivity {
                     Toast.makeText(Order.this,"Status anda : "+response.body().getStatus(),Toast.LENGTH_LONG).show();
                     keluar();
                 } else {
-
+                    Toast.makeText(Order.this,response.message(),Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ChangeStatus> call, Throwable t) {
-
+                Toast.makeText(Order.this,t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -137,9 +138,11 @@ public class Order extends AppCompatActivity {
 
     private void keluar() {
         if (AppState.getInstance().isPesanan()){
-            AppState.getInstance().hapusPesanan();
-            startActivity(new Intent(Order.this, Dashboard.class));
+            Intent intent = new Intent(Order.this,RatingActivity.class);
+            intent.putExtra("invoice",AppState.getInstance().provideInvoice());
+            startActivity(intent);
             finish();
+            AppState.getInstance().hapusPesanan();
         }
     }
 
@@ -153,8 +156,15 @@ public class Order extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (response.body().getStatus().equals("ordered")){
 
-                    } else {
+                    } else if (response.body().getStatus().equals("finished")){
                         keluar();
+                    } else {
+                        if (AppState.getInstance().isPesanan()){
+                            Intent intent = new Intent(Order.this,Dashboard.class);
+                            startActivity(intent);
+                            finish();
+                            AppState.getInstance().hapusPesanan();
+                        }
                     }
                 } else {
 
@@ -163,7 +173,7 @@ public class Order extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<getStatus> call, Throwable t) {
-
+                Toast.makeText(Order.this,t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -180,19 +190,20 @@ public class Order extends AppCompatActivity {
                         tipekendaraan.setText(response.body().getVenichleSeries());
                         tipeservice.setText(response.body().getVenicheType());
                         lokasi.setText(response.body().getLocation());
+                        lokasi.setPaintFlags(lokasi.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                         harga = response.body().getPrice();
                         waktu = response.body().getDuration();
                         hasil_call = response.body().getCustomerdata().getPhone();
                         catatan.setText(response.body().getNote());
                         dialogSekarang();
                 } else {
-
+                    Toast.makeText(Order.this,response.message(),Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<getStatus> call, Throwable t) {
-
+                Toast.makeText(Order.this,t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukkan Nomor Baru"
+        android:fontFamily="@font/sfbold"
+        android:textSize="20dp"
+        android:id="@+id/gantinomor_id"/>
+
+    <EditText
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/gantinomor_id"
+        android:id="@+id/gantinomor_input"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gantinomor_submit"
+        android:fontFamily="@font/sfbold"
+        android:text="DONE"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="#ed1c24"
+        android:textSize="18dp"/>
+
+
+</RelativeLayout>

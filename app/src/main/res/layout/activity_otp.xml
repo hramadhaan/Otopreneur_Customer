@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Activity.OTPActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/otp_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/otp_toolbar"
+            android:layout_width="match_parent"
+            app:theme="@style/Widget.AppCompat.ActionBar.TabBar"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/otp_judul"
+                android:text="OTP Verifikasi"
+                android:textSize="18dp"
+                android:fontFamily="@font/sfbold"
+                android:gravity="center"
+                android:layout_marginRight="?android:attr/actionBarSize"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/otp_appbar"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/otp_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/otp"/>
+            <TextView
+                android:layout_gravity="center"
+                android:fontFamily="@font/sfbold"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kode Verifikasi"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Kami telah mengirim kode verifikasi via SMS"
+                android:fontFamily="@font/sf"
+                android:textSize="14dp"
+                android:textAlignment="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Ubah Nomor"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sfbold"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="#ED1C24"
+                android:id="@+id/otp_ubahnomor"/>
+
+            <in.aabhasjindal.otptextview.OtpTextView
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/otp_otpview"
+                android:textColor="#000"
+                app:height="40dp"
+                app:width="40dp"
+                app:bar_enabled="true"
+                app:bar_height="2dp"
+                app:length="6"
+                app:otp_text_size="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tidak menerima OTP ?"
+                android:fontFamily="@font/sf"
+                android:textSize="14dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/otp_resend"
+                android:text="Resend"
+                android:fontFamily="@font/sfbold"
+                android:textSize="14dp"
+                android:layout_gravity="center"
+                android:textColor="#ED1C24"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

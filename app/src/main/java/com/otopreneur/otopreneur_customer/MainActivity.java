@@ -18,8 +18,10 @@ import android.widget.Toast;
 
 import com.otopreneur.otopreneur_customer.Activity.Activity.Dashboard;
 import com.otopreneur.otopreneur_customer.Activity.Activity.InputNomorTelp;
+import com.otopreneur.otopreneur_customer.Activity.Activity.OTPActivity;
 import com.otopreneur.otopreneur_customer.Data.AppState;
 import com.otopreneur.otopreneur_customer.Model.Roles;
+import com.otopreneur.otopreneur_customer.Model.Status;
 import com.otopreneur.otopreneur_customer.Model.Token;
 import com.otopreneur.otopreneur_customer.Network.ApiService;
 import com.otopreneur.otopreneur_customer.Utils.ApiUtils;
@@ -135,9 +137,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Masuk TRY","Tidak");
 
             if (acct!=null){
-                String personEmail = acct.getEmail();
+                final String personEmail = acct.getEmail();
 //                Uri personPhoto = acct.getPhotoUrl();
-
                 Log.d("Masuk ACCT","Tidak");
 
                 Call<Token> call = apiService.login(personEmail,"password");
@@ -180,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Failure "+t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
-
 
             }
 

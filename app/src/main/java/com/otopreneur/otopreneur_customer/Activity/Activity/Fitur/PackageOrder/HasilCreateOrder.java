@@ -31,6 +31,7 @@ public class HasilCreateOrder extends AppCompatActivity {
     EditText id_service,nama_vendor,harga,nama_pemesan,tipe_kendaraan,catatan,lokasi_kendaraan;
     Button submit;
     String hasil_vendor,hasil_harga,hasil_nama_pemesanan,hasil_tipe_kendaraan,hasil_catatan,hasil_lokasi_kendaraan,invoice,status;
+    String hasil_latitude,hasil_longtitude;
     int hasil_service,hasil_id_customer;
 
     Toolbar toolbar;
@@ -76,6 +77,8 @@ public class HasilCreateOrder extends AppCompatActivity {
         hasil_catatan = getIntent.getStringExtra("catatanKendaraana");
         hasil_lokasi_kendaraan = getIntent.getStringExtra("lokasiKendaraana");
         hasil_vendor = getIntent.getStringExtra("namaVendor");
+        hasil_latitude = getIntent.getStringExtra("latitude");
+        hasil_longtitude = getIntent.getStringExtra("longtitude");
 
         Userdata currentUser = AppState.getInstance().getUser();
         hasil_id_customer = currentUser.getId();
@@ -98,10 +101,12 @@ public class HasilCreateOrder extends AppCompatActivity {
 
         Log.d("TESTING ",hasil_lokasi_kendaraan);
 
+        Toast.makeText(HasilCreateOrder.this,hasil_longtitude,Toast.LENGTH_LONG).show();
+
     }
 
     private void kirim() {
-        Call<Invoice> call = apiService.createOrder(hasil_service,hasil_id_customer,hasil_catatan,hasil_tipe_kendaraan,hasil_lokasi_kendaraan);
+        Call<Invoice> call = apiService.createOrder(hasil_service,hasil_id_customer,hasil_catatan,hasil_tipe_kendaraan,hasil_lokasi_kendaraan,hasil_latitude,hasil_longtitude);
         call.enqueue(new Callback<Invoice>() {
             @Override
             public void onResponse(Call<Invoice> call, Response<Invoice> response) {
