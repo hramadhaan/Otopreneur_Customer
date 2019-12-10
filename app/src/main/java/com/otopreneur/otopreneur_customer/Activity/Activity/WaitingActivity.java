@@ -57,7 +57,7 @@ public class WaitingActivity extends AppCompatActivity {
         rippleBackground.startRippleAnimation();
 
         nama_bengkel = findViewById(R.id.waiting_nama_bengkel);
-        nama_bengkel.setText(appState.getInvoice().getVendor());
+        nama_bengkel.setText("");
 
         refreshLayout = findViewById(R.id.waiting_refresh);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
